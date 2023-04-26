@@ -13,17 +13,18 @@ function parseProperties(
   const classPropertiesMap = new Map<string, Property[]>();
 
   function visit(node: ts.Node) {
-    if (ts.isClassDeclaration(node) && node.name) {
+    if (
+      (ts.isClassDeclaration(node) || ts.isInterfaceDeclaration(node)) &&
+      node.name
+    ) {
       const className = node.name.getText(sourceFile);
       if (classNames.includes(className)) {
         const properties: Property[] = [];
 
         node.members.forEach((member) => {
           if (
-            ts.isPropertyDeclaration(member) &&
-            member.modifiers?.some(
-              (modifier) => modifier.kind === ts.SyntaxKind.PublicKeyword
-            )
+            ts.isPropertyDeclaration(member) ||
+            ts.isPropertySignature(member)
           ) {
             const name = member.name.getText(sourceFile);
             const type = member.type?.getText(sourceFile) || "any";
@@ -97,7 +98,10 @@ function findClassNames(node: ts.Node, sourceFile: ts.SourceFile): string[] {
   let classNames: string[] = [];
 
   function visit(node: ts.Node) {
-    if (ts.isClassDeclaration(node) && node.name) {
+    if (
+      (ts.isClassDeclaration(node) || ts.isInterfaceDeclaration(node)) &&
+      node.name
+    ) {
       classNames.push(node.name.getText(sourceFile));
     }
     ts.forEachChild(node, visit);

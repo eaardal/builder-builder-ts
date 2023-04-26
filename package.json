@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate": "ts-node-esm main.ts",
-    "build": "rm -rf ./dist && tsc",
+    "build": "rm -rf ./dist && tsc --project tsconfig.build.json",
     "sort-bin": "mkdir -p ./bin/linux && mkdir -p ./bin/macos && mkdir -p ./bin/win && mv ./bin/builderbuilder-linux ./bin/linux/builderbuilder && mv ./bin/builderbuilder-macos ./bin/macos/builderbuilder && mv ./bin/builderbuilder-win.exe ./bin/win/builderbuilder.exe",
     "package": "rm -rf ./bin && pkg --target node16-linux,node16-macos,node16-win --out-path ./bin --no-bytecode . && npm run sort-bin",
     "put-on-path": "cp ./bin/macos/builderbuilder"

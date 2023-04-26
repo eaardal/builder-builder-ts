@@ -3,7 +3,7 @@ export class Foo {
   public bbb: number = 111;
 }
 
-export class Bar {
+export class Other {
   public ccc: string = "aaa";
   public ddd: number = 111;
 }
