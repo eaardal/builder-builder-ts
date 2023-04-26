@@ -1,13 +1,13 @@
 # BuilderBuilder
 
-Generates builder-classes from plain TypeScript classes, following conventions from the classic Builder design pattern.
+Generates builder-classes from plain TypeScript classes or interfaces, following conventions from the classic Builder design pattern.
 
 All logic written by ChatGPT.
 
 Example:
 
 ```typescript
-// Input class:
+// Input class (also works on interfaces):
 export class Foo {
   public aaa: string = "aaa";
   public bbb: number = 111;
