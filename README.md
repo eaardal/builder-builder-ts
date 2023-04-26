@@ -41,11 +41,40 @@ class FooBuilder {
 
 ## Usage
 
+Install everything:
+
 ```
-npm run build <path to typescript file containing class(es)> <output path (optional)>
+npm install
+```
+
+Using by running the source code:
+
+```
+npm run generate <path to typescript file containing class(es)> <output path (optional)>
 
 // Example running with testdata in this repo:
-npm run build ./testdata/FooClass.ts ./testdata
+npm run generate ./testdata/FooClass.ts ./testdata/output
+```
+
+Using by running a built executable:
+
+```
+// Build TypeScript to JavaScript
+npm run build
+
+// Package built JavaScript into a executable NodeJS app
+npm run package
+
+./bin/<your OS>/builderbuilder ./testdata/FooClass.ts
+```
+
+Move the built executable to your PATH:
+
+```
+cp ./bin/<your OS>/builderbuilder <your destination>
+
+// Example:
+cp ./bin/macos/builderbuilder ~/dev/apps/builderbuilder (where ~/dev/apps is already on my PATH)
 ```
 
 ## Known issues
