@@ -53,19 +53,10 @@ function generateBuilderClassCode(
 
     // Generate private properties in the builder class
     properties.forEach(({ name, type }) => {
-      code += `  private _${name}: ${type};\n`;
+      code += `  private _${name}?: ${type};\n`;
     });
 
     code += "\n";
-
-    // Generate constructor with parameters to initialize properties
-    code += `  constructor(${properties
-      .map(({ name, type }) => `${name}: ${type}`)
-      .join(", ")}) {\n`;
-    properties.forEach(({ name }) => {
-      code += `    this._${name} = ${name};\n`;
-    });
-    code += "  }\n";
 
     // Generate with* methods
     properties.forEach(({ name, type }) => {
